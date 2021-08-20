@@ -57,7 +57,7 @@ dividendo = cociente x divisor + resto
 - [x] 2. Dar la tabla de verdad para el circuito que compara dos números de dos bits. Las dos compuertas que aparecen ahí son XNOR, es decir la negación de XOR.
 - [x] 3. Expresar la salida como *Q* del circuito comparador de forma algebraica (como una ecuación).
 - [x] 4. Dar un circuito de tres entradas y una salida que produzca un uno cuando haya un número impar de unos en sus entradas.
-- [ ] 5. Dar el circuito y la tabla de verdad resumida para un multiplexor 4:1.
+- [x] 5. Dar el circuito y la tabla de verdad resumida para un multiplexor 4:1.
 - [x] 6. Dar el circuito del decodificador 2:4. Dar circuito y tabla para el decodificador 3:8.
 - [x] 7. Dar el circuito de un _half adder_ sin usar una compuerta XOR.
 - [ ] 8. Dar el circuito de un _full adder_, teniendo en cuenta la tabla de verdad y que como su nombre lo indica hace uso de dos _half adder_.
