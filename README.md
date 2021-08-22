@@ -62,7 +62,7 @@ dividendo = cociente x divisor + resto
 - [x] 7. Dar el circuito de un _half adder_ sin usar una compuerta XOR.
 - [x] 8. Dar el circuito de un _full adder_, teniendo en cuenta la tabla de verdad y que como su nombre lo indica hace uso de dos _half adder_.
 - [x] 9. Implementar un circuito que me dé el complemento a dos de un número de 3 bits.
-- [ ] 10. Implementar un circuito que sume o reste según se elija dos números de 3 bits.
+- [x] 10. Implementar un circuito que sume o reste según se elija dos números de 3 bits.
 - [ ] 11. Existen cuatro tipos de _flip flops_. Los tipos SR, D, JK y T. Buscar la tabla característica del _flip flop_ de tipo JK.
 - [ ] 12. Existen muchos tutoriales de Arduino que muestran como usar un integrado 74HC595 para ampliar la cantidad de salidas digitales. El 74HC595 es un _shift register_ SIPO (_serial in parallel out_). Mostrar el circuito de un _shift register_ de 4 bits usando _flip flops_ de tipo D.
 - [ ] 13. Un contador es un circuito que almacena de un número de _n_ bits con la capacidad de ir aumentando en uno ese número, osea contando. Por ejemplo el contador binario de 4 bits va desde 0000<sub>2</sub> a 1111<sub>2</sub> y "da la vuelta", pasa del 15 al 0 de vuelta. Implementar un contador binario de 4 bits usando _flip flops_ JK.
