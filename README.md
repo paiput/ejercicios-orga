@@ -60,8 +60,8 @@ dividendo = cociente x divisor + resto
 - [x] 5. Dar el circuito y la tabla de verdad resumida para un multiplexor 4:1.
 - [x] 6. Dar el circuito del decodificador 2:4. Dar circuito y tabla para el decodificador 3:8.
 - [x] 7. Dar el circuito de un _half adder_ sin usar una compuerta XOR.
-- [ ] 8. Dar el circuito de un _full adder_, teniendo en cuenta la tabla de verdad y que como su nombre lo indica hace uso de dos _half adder_.
-- [ ] 9. Implementar un circuito que me dé el complemento a dos de un número de 3 bits.
+- [x] 8. Dar el circuito de un _full adder_, teniendo en cuenta la tabla de verdad y que como su nombre lo indica hace uso de dos _half adder_.
+- [x] 9. Implementar un circuito que me dé el complemento a dos de un número de 3 bits.
 - [ ] 10. Implementar un circuito que sume o reste según se elija dos números de 3 bits.
 - [ ] 11. Existen cuatro tipos de _flip flops_. Los tipos SR, D, JK y T. Buscar la tabla característica del _flip flop_ de tipo JK.
 - [ ] 12. Existen muchos tutoriales de Arduino que muestran como usar un integrado 74HC595 para ampliar la cantidad de salidas digitales. El 74HC595 es un _shift register_ SIPO (_serial in parallel out_). Mostrar el circuito de un _shift register_ de 4 bits usando _flip flops_ de tipo D.
