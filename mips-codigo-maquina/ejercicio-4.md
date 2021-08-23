@@ -21,5 +21,8 @@ op   rs   rt   rd   shamt   funct
 ```
 
 ```
-sub $t0, $t1, $t2
+sub $t2, $t0, $t1
+
+sub     $t2,   $t0,   $t1
+funct   rd     rs     rt
 ```
