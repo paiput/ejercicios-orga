@@ -47,7 +47,7 @@ dividendo = cociente x divisor + resto
 - [x] 1. Traducir de ensamblador de MIPS a código máquina: `lw $t0, 1200($t1)`.
 - [x] 2. Traducir de ensamblador de MIPS a código máquina: `add $t0, $s2, $t0`.
 - [x] 3. Traducir de ensamblador de MIPS a código máquina: `sw $t0, 1200($t1)`.
-- [ ] 4. Traducir de código máquina a ensamblador de MIPS: `0x01095022`.
+- [x] 4. Traducir de código máquina a ensamblador de MIPS: `0x01095022`.
 
 ## Lógica digital
 
