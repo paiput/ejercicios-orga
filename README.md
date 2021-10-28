@@ -68,3 +68,115 @@ dividendo = cociente x divisor + resto
 - [ ] 13. Un contador es un circuito que almacena de un número de _n_ bits con la capacidad de ir aumentando en uno ese número, osea contando. Por ejemplo el contador binario de 4 bits va desde 0000<sub>2</sub> a 1111<sub>2</sub> y "da la vuelta", pasa del 15 al 0 de vuelta. Implementar un contador binario de 4 bits usando _flip flops_ JK.
 - [ ] 14. Un archivo de registros es un circuito que se encuentra generalmente dentro de una CPU con un número pequeño de registros, como 16 por ejemplo. Funciona de manera similar a una memoria. Dar el circuito de un archivo de registros con cuatro registros de 8 bits que me permita leer de dos registros a la vez y escribir en uno de ellos. Pista: los multiplexores y demultiplexores pueden ser útiles.
 - [ ] 15. ¿Cuál es la diferencia entre un decodificador y un demultiplexor? Ilustrar con circuitos.
+
+## MIPS: Datapath
+
+[Apunte en el blog](https://la35.net/orga/mips-datapath.html).
+
+- [ ] 1. ¿Para qué sirve el multiplexor antes de la entrada B de la ALU? Dar ejemplos de dos instrucciones donde se elija entre una u otra entrada del multiplexor.
+- [ ] 2. Identificar qué unidades funcionales del *datapath* de MIPS intervienen en un `lw`, `sw`, `add`, `addi` y `beq`.
+- [ ] 3. Sabiendo que en una computadora existen buses para datos, direcciones y control. Y que en el diagrama del *datapath* los cables del bus de control están resaltados en azul. Marcar en rojo los buses de direcciones y dejar en negro los buses de datos en el diagrama.
+¿Encuentran alguna conexión que pueda interpretarse como de datos o direcciones según cambie la instrucción a ejecutar?
+- [ ] 4. Considere la siguiente instrucción `and $t0, $t1, $t2`. ¿Qué valores toman las señales de control? ¿Qué unidades funcionales realizan una tarea útil? ¿Qué unidades producen una salida pero esa salida no se usa en la instrucción?
+- [ ] 5. Si quisiéramos agregar la instrucción `sll` (*shif left logical*) al *datapath*. ¿Qué modificaciones tendríamos que hacer? ¿Qué unidades habría que agregar? En general para las operaciones de *shift* se usa un circuito llamado *barrel shifter*. Un ejemplo de la instrucción sería `sll $t0, $t1, 5` y significa desplazar a la izquierda 5 bits de `$t1` y guardar el resultado en `$t0`.
+- [ ] 6. Marcar el camino crítico para las instrucciones `lw`, `sw`, `add` y `beq` en el diagrama del *datapath* sacado del libro de Patterson (el que está en el blog). El camino crítico es el camino más largo que recorre una instrucción de inicio a fin. Usar los tiempos de propagación del ejercicio 8.
+- [ ] 7. ¿Qué agregarían al *datapath* para implementar instrucciones de comparación como `slt` (*set on less than*)? Ejemplo: `slt $t0, $t1, $t2` significa si `$t1` es menor a `$t2` guardar un uno en `$t0`, de lo contrario guardar un cero.
+- [ ] 8. Asumiendo que los bloques del *datapath* tienen las siguientes latencias:
+
+|Instr Mem|Add|Mux|ALU|Reg File|Data Mem|Sign extend|Shift left 2|
+|---|---|---|---|---|---|---|---|
+|200ps|70ps|20ps|90ps|90ps|250ps|15ps|10ps|
+
+  ¿Cuál es la duración mínima del ciclo de reloj de esta CPU? ¿Qué instrucción se ejecuta más rápido, un `add` o un `lw`? ¿Cuál es la frecuencia máxima de esta CPU y cuántas MIPS (millones de instrucciones por segundo) puede ejecutar?
+  
+- [ ] 9. Considere la instrucción `1010 1100 0110 0010 0000 0000 0001 0100`. Asumiendo que la memoria de datos está completamente en ceros y que los registros tienen los siguientes valores.
+
+|`$0`|`$1`|`$2`|`$3`|`$4`|`$5`|`$6`|`$8`|`$12`|`$31`|
+|---|---|---|---|---|---|---|---|---|---|
+|0|-1|2|-3|-4|10|6|8|2|-16|
+
+ - ¿Cuáles son la salidas del *sign extend* y del *shift left 2*?
+ - ¿Qué valores toman las entradas de ALU control?
+ - ¿Cuál es el nuevo valor del PC después de ejecutar la instrucción? Resaltar el camino por el cual se determina este valor.
+ - Para cada multiplexor indicar el valor de su salida durante esta instrucción.
+ - ¿Qué valores toman las entradas de la ALU y de las dos unidades sumadoras?
+ - ¿Qué valores toman las entradas del archivo de registros?
+
+
+- [ ] 10. ¿Qué modificaciones habría que hacer en el *datapath* para agregar la instrucción `jal` (*jump and link*)?. Usar la versión simulada en Logisim que incorpora la lógica para `j` (*jump*).
+
+## MIPS: Control
+
+[Apunte en el blog](https://la35.net/orga/mips-control.html).
+
+- [ ] 1. Mirando las señales de control para `beq`, `j`, `lw`, `sw` y las instrucciones de tipo R. ¿Existe la posibilidad de combinar dos o más señales? ¿Puede reemplazarse alguna señal por la inversa de otra?
+- [ ] 2. Agregar a la unidad de control vista la instrucción `addi`. ¿Qué valores usarían para las dos señales de ALU Op?
+- [ ] 3. Qué diferencia encuentran en la palabra de control (las señales de control consideradas como un único número) entre estas dos instrucciones: `add $1, $2, $3` y `add $7, $8, $9`.
+- [ ] 4. ¿Por qué es necesario tener una señal `RegWrite` para indicar que hay que escribir en el archivo de registros pero no hace falta una señal similar para el _Program Counter_?
+- [ ] 5. Las 4 líneas que salen de ALU Control y entran como señales de control a la ALU, dentro de la ALU, ¿qué es lo que controlan? Observar lo que pasa en el circuito simulado en Logisim.
+- [ ] 6. Si solo quisiéramos implementar instrucciones de tipo R en la CPU de MIPS. ¿Qué señales de control eliminarían y por qué?
+- [ ] 7. Imaginar que solo tenemos que implementar `sw`, `lw` y `addi` en la CPU de MIPS. ¿Cómo harían para implementar el control de este _datapath_ sin agregar una sola compuerta para la unidad de control?
+- [ ] 8. Completando el ejercicio 10 de la guía anterior (_datapath_). ¿Qué cambios harían en la unidad de control para que `jal` funcione correctamente?
+- [ ] 9. Si eliminamos la señal `MemToReg`, ¿qué instrucciones no podrían ejecutarse correctamente?
+- [ ] 10. La línea azul rotulada como `Zero` que sale de la ALU más que un dato es una señal de control que usa la instrucción `beq` para decidir si dos registros son iguales. Investigar y describir brevemente la solución que usa la arquitectura x86 para que se remonta al microprocesador Intel 8080. Es decir, ¿cuál es la lógica en x86 que se usa para instrucciones como _branchs_ que afectan a las instrucciones que siguen?
+
+## MIPS: Pipeline
+
+[Apunte en el blog](https://la35.net/orga/mips-pipeline.html).
+
+- [ ] 1. Realizar una tabla de doble entrada indicando en las columnas las cinco fases del _pipeline_ de MIPS y en las filas las siguientes instrucciones: `lw`, `sw`, `beq`, `j`, `addi` e instrucciones de tipo R. Marcar con una cruz las etapas en las que cada instrucción hace algo útil.
+- [ ] 2. Indicar el o los tipos de riesgos que aparecen en el siguiente código. Explicar en cada caso por qué se genera un riesgo.
+```
+  addi    $t1, $zero, 10
+loop:
+  beq     $zero, $t1, exit
+  addi    $t1, $t1, -1
+  addi    $v0, $zero, 1
+  addi    $a0, $zero, 42
+  syscall
+  j       loop
+exit:
+  addi    $v0, $zero, 10
+```
+- [ ] 3. Considerar el siguiente código.
+  ```
+  or $1, $2, $3
+  or $2, $1, $4
+  or $1, $1, $2
+  ```
+  Indicar los riesgos de datos. Si no hay _forwarding_ en este _pipeline_, ¿cómo podemos asegurar que las instrucciones den los resultados correctos? Dibujar un diagrama del _pipeline_ para estas tres instrucciones teniendo en cuenta la solución propuesta para eliminar los riesgos.
+  
+- [ ] 4. Indicar los contenidos de los registros del _pipeline_ y cuántos bits ocupa cada uno. Considerar las instrucciones `lw`, `sw`, `addi`, `beq` y las de tipo R. Ojo que en el artículo del blog puede haber alguna simplificación que no es del todo correcta.
+- [ ] 5. ¿Por qué en un riesgo de datos entre dos instrucciones de tipo R no se necesita una "burbuja" pero entre un `lw` y una instrucción de tipo R sí?
+- [ ] 6. Teniendo en cuenta el siguiente código:
+```
+lw   $t1, 0($t0)
+lw   $t2, 4($t0)
+add  $t3, $t1, $t2
+sw   $t3, 12($t0)
+lw   $t4, 8($t0)
+add  $t5, $t1, $t4
+sw   $t5, 16($t0)
+```
+Encontrar los riesgos en el código y reordenar para evitar burbujas en el _pipeline_. Considerar qué riesgos pueden salvarse mediante _forwarding_.
+
+- [ ] 7. Si insertamos burbujas al _pipeline_ cada vez que en la fase IF traemos un _branch_ para esperar a saber cuál es la próxima instrucción. ¿Cuántos ciclos de reloj desperdiciamos?
+- [ ] 8. Siguiendo con la pregunta anterior. ¿Qué podemos hacer para minimizar el costo de parar el _pipeline_ en cada _branch_?
+- [ ] 9. Para los siguientes fragmentos de código indicar si: se ejecuta normalmente, se ejecuta correctamente usando solo _forwarding_ o tiene que insertar burbujas incluso pudiendo hacer uso de _forwarding_.
+```
+lw  $t0, 0($t0)
+add $t1, $t0, $t0
+```
+```
+add  $t1, $t0, $t0
+addi $t2, $t0, 5
+addi $t4, $t1, 5
+```
+```
+addi $t1, $t0, 1
+addi $t2, $t0, 2
+addi $t3, $t0, 2
+addi $t3, $t0, 4
+addi $t5, $t0, 5
+```
+- [ ] 10. Modificar el circuito del Logisim del _datapath_ de ciclo único con unidad de control para que ejecute las instrucciones usando _pipelining_. Es decir, agregar los registros que separan las etapas. Ignorar completamente los riesgos de datos y de control.
