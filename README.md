@@ -74,7 +74,7 @@ dividendo = cociente x divisor + resto
 [Apunte en el blog](https://la35.net/orga/mips-datapath.html).
 
 - [x] 1. ¿Para qué sirve el multiplexor antes de la entrada B de la ALU? Dar ejemplos de dos instrucciones donde se elija entre una u otra entrada del multiplexor.
-- [ ] 2. Identificar qué unidades funcionales del *datapath* de MIPS intervienen en un `lw`, `sw`, `add`, `addi` y `beq`.
+- [x] 2. Identificar qué unidades funcionales del *datapath* de MIPS intervienen en un `lw`, `sw`, `add`, `addi` y `beq`.
 - [ ] 3. Sabiendo que en una computadora existen buses para datos, direcciones y control. Y que en el diagrama del *datapath* los cables del bus de control están resaltados en azul. Marcar en rojo los buses de direcciones y dejar en negro los buses de datos en el diagrama.
 ¿Encuentran alguna conexión que pueda interpretarse como de datos o direcciones según cambie la instrucción a ejecutar?
 - [ ] 4. Considere la siguiente instrucción `and $t0, $t1, $t2`. ¿Qué valores toman las señales de control? ¿Qué unidades funcionales realizan una tarea útil? ¿Qué unidades producen una salida pero esa salida no se usa en la instrucción?
