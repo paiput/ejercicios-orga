@@ -75,7 +75,7 @@ dividendo = cociente x divisor + resto
 
 - [x] 1. ¿Para qué sirve el multiplexor antes de la entrada B de la ALU? Dar ejemplos de dos instrucciones donde se elija entre una u otra entrada del multiplexor.
 - [x] 2. Identificar qué unidades funcionales del *datapath* de MIPS intervienen en un `lw`, `sw`, `add`, `addi` y `beq`.
-- [ ] 3. Sabiendo que en una computadora existen buses para datos, direcciones y control. Y que en el diagrama del *datapath* los cables del bus de control están resaltados en azul. Marcar en rojo los buses de direcciones y dejar en negro los buses de datos en el diagrama.
+- [x] 3. Sabiendo que en una computadora existen buses para datos, direcciones y control. Y que en el diagrama del *datapath* los cables del bus de control están resaltados en azul. Marcar en rojo los buses de direcciones y dejar en negro los buses de datos en el diagrama.
 ¿Encuentran alguna conexión que pueda interpretarse como de datos o direcciones según cambie la instrucción a ejecutar?
 - [ ] 4. Considere la siguiente instrucción `and $t0, $t1, $t2`. ¿Qué valores toman las señales de control? ¿Qué unidades funcionales realizan una tarea útil? ¿Qué unidades producen una salida pero esa salida no se usa en la instrucción?
 - [ ] 5. Si quisiéramos agregar la instrucción `sll` (*shif left logical*) al *datapath*. ¿Qué modificaciones tendríamos que hacer? ¿Qué unidades habría que agregar? En general para las operaciones de *shift* se usa un circuito llamado *barrel shifter*. Un ejemplo de la instrucción sería `sll $t0, $t1, 5` y significa desplazar a la izquierda 5 bits de `$t1` y guardar el resultado en `$t0`.
