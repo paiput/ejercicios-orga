@@ -14,4 +14,40 @@ Tiempo total de ejecución = 200ps + 70ps + 20ps + 20ps + 15ps + 20ps + 90ps + 2
 
 Tiempo total de ejecución = 795ps
 
-### Camino de `sw`
+### Camino de `sw`:
+
+![datapath](./img/ej6b.png)
+
+Tiempo total de ejecución = Instr Mem + Add + Mux + Mux + Reg File + Sign extend + Mux + ALU + Data Mem
+
+Tiempo total de ejecución = 200ps + 70ps + 20ps + 20ps + 90ps + 15ps + 20ps + 90ps + 250ps
+
+Tiempo total de ejecución = 775ps
+
+### Camino de `add`:
+
+![datapath](./img/ej6c.png)
+
+Tiempo total de ejecución = Instr Mem + Add + Mux + Mux + Reg File + Mux + ALU + Mux
+
+Tiempo total de ejecución = 200ps + 70ps + 20ps + 20ps + 90ps + 20ps + 90ps + 20ps
+
+Tiempo total de ejecución = 530ps
+
+### Camino de `beq`:
+
+![datapath](./img/ej6d.png)
+
+Tiempo total de ejecución (si no se cumple el `beq`) = Instr Mem + Add + Mux + Reg File + Sign extend + Mux + Shift left 2 + ALU
+
+Tiempo total de ejecución (si no se cumple el `beq`) = 200ps + 70ps + 20ps + 90ps + 15ps + 20ps + 10ps + 90ps
+
+Tiempo total de ejecución (si no se cumple el `beq`) = 515ps
+
+-----
+
+Tiempo total de ejecución (si se cumple el `beq`) = Instr Mem + Add + Mux + Reg File + Sign extend + Mux + Shift left 2 + Add + ALU
+
+Tiempo total de ejecución (si se cumple el `beq`) = 200ps + 70ps + 20ps + 90ps + 15ps + 20ps + 10ps + 70ps + 90ps
+
+Tiempo total de ejecución (si se cumple el `beq`) = 585ps
